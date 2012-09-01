@@ -1,0 +1,27 @@
+{
+    "author": "Andreas Lind Petersen <andreas@one.com>",
+    "name": "createerror",
+    "description": "Helper for creating easily extensible and subclassable JavaScript Error classes.",
+    "keywords": ["errors", "error", "class", "errorclass"],
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/One-com/node-createerror.git"
+    },
+    "main": "index.js",
+    "engines": {
+        "node": ">= 0.2.0"
+    },
+    "dependencies": {
+        "xtend": "1.0.3"
+    },
+    "scripts": {
+        "test": "mocha --ui qunit test.js"
+    },
+    "devDependencies": {
+        "mocha": "1.x.x"
+    },
+    "publishConfig": {
+        "repository": "http://registry.npmjs.org/"
+    }
+}
