@@ -33,7 +33,8 @@ Instances can carry extra data about the error:
     }
 
 Inheriting from an existing Error class (the Error classes in the
-`httpErrors` module also use `createError`):
+[httpErrors](https://github.com/One-com/node-httperrors)  module also use
+`createError`):
 
     var httpErrors = require('httperrors');
 
