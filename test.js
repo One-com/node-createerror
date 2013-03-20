@@ -1,5 +1,5 @@
 var assert = require('assert'),
-    createError = require('./');
+    createError = require('./lib/createError');
 
 test('arbitrary property passed to createError', function() {
     var Err = createError({foo: 'bar'}),

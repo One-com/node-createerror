@@ -8,7 +8,7 @@
         "type": "git",
         "url": "git://github.com/One-com/node-createerror.git"
     },
-    "main": "index.js",
+    "main": "lib/createError.js",
     "engines": {
         "node": ">= 0.2.0"
     },
