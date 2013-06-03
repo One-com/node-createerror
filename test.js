@@ -12,7 +12,7 @@ test('arbitrary property passed to createError', function() {
 });
 
 test('Error constructor invoked without new', function() {
-    var Err = createError({}),
+    var Err = createError(),
         err = Err('message');
 
     assert.ok(err instanceof Err);
