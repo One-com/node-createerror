@@ -10,3 +10,10 @@ test('arbitrary property passed to createError', function() {
     var err2 = new Err({foo: 'quux'});
     assert.equal(err2.foo, 'quux');
 });
+
+test('Error constructor invoked without new', function() {
+    var Err = createError({}),
+        err = Err('message');
+
+    assert.ok(err instanceof Err);
+});
