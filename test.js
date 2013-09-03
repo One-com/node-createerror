@@ -13,6 +13,20 @@ test('arbitrary property passed to createError', function () {
     assert.ok(/test\.js:/.test(err.stack.split("\n")[1]));
 });
 
+test('existing Error instance passed to createError should preserve the original stack trace and gain the properties of the Error class and its superclass', function () {
+    function Foo() {
+        return new Error('the original error');
+    }
+    var SuperError = createError({isSuper: true}),
+        Err = createError({name: 'SomethingMoreSpecific'}, SuperError),
+        err = new Err(Foo('blabla'));
+    assert.equal(err.name, 'SomethingMoreSpecific');
+    assert.ok(err.isSuper);
+    assert.ok(err.SomethingMoreSpecific);
+    assert.ok(/the original error/.test(err.stack));
+    assert.ok(/Foo/.test(err.stack));
+});
+
 test('Error constructor invoked without new', function () {
     var Err = createError(),
         err = Err('message');
