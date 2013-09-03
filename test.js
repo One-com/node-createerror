@@ -1,7 +1,7 @@
 var assert = require('assert'),
     createError = require('./lib/createError');
 
-test('arbitrary property passed to createError', function() {
+test('arbitrary property passed to createError', function () {
     var Err = createError({foo: 'bar'}),
         err = new Err();
 
@@ -13,7 +13,7 @@ test('arbitrary property passed to createError', function() {
     assert.ok(/test\.js:/.test(err.stack.split("\n")[1]));
 });
 
-test('Error constructor invoked without new', function() {
+test('Error constructor invoked without new', function () {
     var Err = createError(),
         err = Err('message');
 
