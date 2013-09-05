@@ -2,6 +2,39 @@ var expect = require('unexpected'),
     createError = require('../lib/createError');
 
 describe('createError', function () {
+    // https://github.com/joyent/node/issues/3212
+    it('should return "[object Error]" when Object.prototype.toString is called on it', function () {
+        var Err = createError({foo: 'bar'});
+        expect(Object.prototype.toString.call(new Err()), 'to equal', '[object Error]');
+    });
+
+    it('should result a constructor that produces instances of itself and Error', function () {
+        var Err = createError({foo: 'bar'});
+        expect(new Err(), 'to be an', Err);
+    });
+
+    it('should return a constructor that produces instances of its SuperConstructor and Error', function () {
+        var SuperErr = createError({quux: 'baz'}),
+            Err = createError({foo: 'bar'}, SuperErr);
+        expect(new Err(), 'to be an', Error);
+        expect(new Err(), 'to be a', SuperErr);
+    });
+
+    it('should return a constructor that produces instances whose toString method return the expected value', function () {
+        var Err = createError({foo: 'bar', name: 'TheErrorName'});
+        expect(new Err('error message').toString(), 'to equal', 'TheErrorName: error message');
+        expect(new Err().toString(), 'to equal', 'TheErrorName');
+    });
+
+    it('should subclass TypeError (and thus other built-in Error subclasses) correctly', function () {
+        var Err = createError({foo: 'bar', name: 'TheErrorName'}, TypeError),
+            err = new Err('the error message');
+        expect(Object.prototype.toString.call(err), 'to equal', '[object Error]');
+        expect(err, 'to be a', TypeError);
+        expect(err, 'to be an', Error);
+        expect(err, 'to be an', Err);
+    });
+
     it('should adopt arbitrary properties passed to a generated constructor', function () {
         var Err = createError({foo: 'bar'}),
             err = new Err();
@@ -18,7 +51,7 @@ describe('createError', function () {
         function Foo() {
             return new Error('the original error');
         }
-        var SuperError = createError({isSuper: true}),
+        var SuperError = createError({isSuper: true, name: 'Super'}),
             Err = createError({name: 'SomethingMoreSpecific'}, SuperError),
             err = new Err(Foo('blabla'));
         expect(err.name, 'to equal', 'SomethingMoreSpecific');
