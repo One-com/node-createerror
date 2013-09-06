@@ -1,25 +1,25 @@
 {
-    "author": "Andreas Lind Petersen <andreas@one.com>",
-    "name": "createerror",
-    "description": "Helper for creating easily extensible and subclassable JavaScript Error classes.",
-    "keywords": ["errors", "error", "class", "errorclass"],
-    "version": "0.4.0",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/One-com/node-createerror.git"
-    },
-    "main": "lib/createError.js",
-    "engines": {
-        "node": ">= 0.2.0"
-    },
-    "scripts": {
-        "test": "mocha --recursive"
-    },
-    "devDependencies": {
-        "mocha": "1.12.1",
-        "unexpected": "=0.0.6"
-    },
-    "publishConfig": {
-        "repository": "http://registry.npmjs.org/"
-    }
+  "author": "Andreas Lind Petersen <andreas@one.com>",
+  "name": "createerror",
+  "description": "Helper for creating easily extensible and subclassable JavaScript Error classes.",
+  "keywords": ["errors", "error", "class", "errorclass"],
+  "version": "0.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/One-com/node-createerror.git"
+  },
+  "main": "lib/createError.js",
+  "engines": {
+    "node": ">= 0.2.0"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "devDependencies": {
+    "mocha": "1.12.1",
+    "unexpected": "=0.0.6"
+  },
+  "publishConfig": {
+    "repository": "http://registry.npmjs.org/"
+  }
 }
