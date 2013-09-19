@@ -13,6 +13,11 @@ describe('createError', function () {
         expect(new Err(), 'to be an', Err);
     });
 
+    it('should return a constructor that prefers a message passed as to first argument to the one provided in the options object', function () {
+        var Err = createError({message: 'default message'});
+        expect(new Err('overridden message').message, 'to equal', 'overridden message');
+    });
+
     it('should return a constructor that produces instances of its SuperConstructor and Error', function () {
         var SuperErr = createError({quux: 'baz'}),
             Err = createError({foo: 'bar'}, SuperErr);
