@@ -16,8 +16,8 @@
     "test": "mocha --recursive"
   },
   "devDependencies": {
-    "mocha": "1.12.1",
-    "unexpected": "=0.0.6"
+    "mocha": "1.13.0",
+    "unexpected": "=1.0.1"
   },
   "publishConfig": {
     "repository": "http://registry.npmjs.org/"
