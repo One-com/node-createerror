@@ -74,4 +74,17 @@ describe('createError', function () {
         // Make sure that top stack frame in err.stack points to this file rather than createError.js:
         expect(err.stack.split("\n")[1], 'to match', /test\/createError\.js:/);
     });
+
+    it('should mix the data object of the class with those of the instance', function () {
+        var Err = createError({data: {upstream: 'foo'}}),
+            err = Err({message: 'blah', data: {quux: 123}});
+
+        expect(err, 'to have properties', {
+            message: 'blah',
+            data: {
+                upstream: 'foo',
+                quux: 123
+            }
+        });
+    });
 });
