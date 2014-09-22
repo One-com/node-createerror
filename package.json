@@ -2,7 +2,12 @@
   "author": "Andreas Lind Petersen <andreas@one.com>",
   "name": "createerror",
   "description": "Helper for creating easily extensible and subclassable JavaScript Error classes.",
-  "keywords": ["errors", "error", "class", "errorclass"],
+  "keywords": [
+    "errors",
+    "error",
+    "class",
+    "errorclass"
+  ],
   "version": "0.4.1",
   "repository": {
     "type": "git",
