@@ -87,4 +87,18 @@ describe('createError', function () {
             }
         });
     });
+
+    it('should not share the data object between instances', function () {
+        var classData = {hey: 'there'};
+        var Err = createError({data: classData}),
+            err1 = new Err();
+        expect(err1.data, 'to equal', {hey: 'there'});
+        expect(err1.data, 'not to be', classData);
+
+        err1.data.foo = 'bar';
+
+        var err2 = new Err();
+
+        expect(err2.data.foo, 'to be undefined');
+    });
 });
