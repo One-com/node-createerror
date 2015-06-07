@@ -101,4 +101,22 @@ describe('createError', function () {
 
         expect(err2.data.foo, 'to be undefined');
     });
+
+    it('should not alter an existing error', function () {
+        var classData = {hey: 'there'};
+        var LocalError = createError({name: 'LocalError', data: classData}),
+            SpecificLocalError = createError({name: 'SpecificLocalError'}, LocalError),
+            err = new Error('standard error');
+
+        // create a new local error passing in the original error
+        var localError = new SpecificLocalError(err);
+
+        // assert we added no keys to the orignal
+        expect(err, 'to only have keys', ['message']);
+
+        // assert the error was correctly extended
+        expect(localError, 'to have message', 'standard error');
+        expect(localError.name, 'to equal', 'SpecificLocalError');
+        expect(localError.data, 'to equal', classData);
+    });
 });
