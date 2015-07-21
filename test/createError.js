@@ -124,4 +124,9 @@ describe('createError', function () {
         expect(localError.name, 'to equal', 'SpecificLocalError');
         expect(localError.data, 'to equal', classData);
     });
+
+    it('should not break when the constructor options object has a data property with a value of undefined', function () {
+        var Err = createError();
+        new Err({data: undefined});
+    });
 });
