@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "mocha": "2.2.5",
-    "unexpected": "7.4.2"
+    "unexpected": "9.2.1"
   },
   "publishConfig": {
     "repository": "http://registry.npmjs.org/"
