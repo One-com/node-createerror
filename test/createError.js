@@ -13,6 +13,11 @@ describe('createError', function () {
         expect(new Err(), 'to be an', Err);
     });
 
+    it('should result a constructor that produces instances whose constructor property point at it', function () {
+        var Err = createError({foo: 'bar'});
+        expect(new Err().constructor, 'to equal', Err);
+    });
+
     it('should return a constructor that prefers a message passed as to first argument to the one provided in the options object', function () {
         var Err = createError({message: 'default message'});
         expect(new Err('overridden message').message, 'to equal', 'overridden message');
