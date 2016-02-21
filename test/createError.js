@@ -129,4 +129,29 @@ describe('createError', function () {
         var Err = createError();
         new Err({data: undefined});
     });
+
+    describe('with a preprocess parameter', function () {
+        it('should pass the constructor parameters to the preprocessor', function () {
+            var Err = createError({
+                preprocess: function (messageOrOptionsOrError) {
+                    messageOrOptionsOrError.foo = 123;
+                    return messageOrOptionsOrError;
+                }
+            });
+            expect(new Err({}), 'to satisfy', {
+                foo: 123
+            });
+        });
+
+        it('should keep the original options object if the preprocessor returns undefined', function () {
+            var Err = createError({
+                preprocess: function (messageOrOptionsOrError) {
+                    return;
+                }
+            });
+            expect(new Err({ foo: 123 }), 'to satisfy', {
+                foo: 123
+            });
+        });
+    });
 });
