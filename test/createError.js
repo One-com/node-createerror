@@ -8,6 +8,16 @@ describe('createError', function () {
         expect(Object.prototype.toString.call(new Err()), 'to equal', '[object Error]');
     });
 
+    it('should default to the message provided in the options object when creating the class', function () {
+        var Err = createError({message: 'theDefaultMessage'});
+        expect(new Err().message, 'to equal', 'theDefaultMessage');
+    });
+
+    it('should include the default message in the stringification of the Error', function () {
+        var Err = createError({message: 'theDefaultMessage'});
+        expect(new Err().toString(), 'to equal', 'Error: theDefaultMessage');
+    });
+
     it('should result a constructor that produces instances of itself and Error', function () {
         var Err = createError({foo: 'bar'});
         expect(new Err(), 'to be an', Err);
