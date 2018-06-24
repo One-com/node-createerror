@@ -21,7 +21,7 @@
     "test": "mocha --recursive"
   },
   "devDependencies": {
-    "mocha": "2.4.5",
+    "mocha": "^5.2.0",
     "unexpected": "10.8.2"
   }
 }
